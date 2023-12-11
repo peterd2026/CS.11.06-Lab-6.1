@@ -9,7 +9,22 @@ public class AdventureTime {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
+        public static void main(String[] args) throws IOException {
+            String inputFilename = "inputOneTwo.txt";
 
+            int count1 = challengeOne(inputFilename);
+            System.out.println("Challenge 1: Number of measurements larger than the previous measurement: " + count1);
+
+            int count2 = challengeTwo(inputFilename);
+            System.out.println("Challenge 2: Number of sums larger than the previous sum: " + count2);
+
+            String inputFilename2 = "inputThreeFour.txt";
+            int result3 = challengeThree(inputFilename2);
+            System.out.println("Challenge 3: Horizontal position multiplied by depth: " + result3);
+
+            int result4 = challengeFour(inputFilename2);
+            System.out.println("Challenge 4: Horizontal position multiplied by depth: " + result4);
+        }
 
     }
 
@@ -22,8 +37,18 @@ public class AdventureTime {
      * @throws IOException
      */
     public static int challengeOne(String fileName) throws IOException {
-        return 0;
+        int[] data = readFile(fileName);
+        int count = 0;
+
+        for (int i = 1; i < data.length; i++) {
+            if (data[i] > data[i - 1]) {
+                count++;
+            }
+        }
+
+        return count;
     }
+
 
     /** TODO 2
      *
@@ -34,7 +59,17 @@ public class AdventureTime {
      * @throws FileNotFoundException
      */
     public static int challengeTwo(String fileName) throws FileNotFoundException {
-        return 0;
+        int[] data = readFile(fileName);
+        int count = 0;
+
+        for (int i = 2; i < data.length; i++) {
+            int sum1 = data[i - 2] + data[i - 1] + data[i];
+            int sum2 = data[i - 3] + data[i - 2] + data[i - 1];
+            if (sum1 > sum2) {
+                count++;
+            }
+        }
+
     }
 
     /** TODO 3
@@ -46,7 +81,29 @@ public class AdventureTime {
      * @throws FileNotFoundException
      */
     public static int challengeThree(String fileName) throws FileNotFoundException {
-        return 0;
+        String[] commands = readFileAsStringArray(fileName);
+        int horizontalPosition = 0;
+        int depth = 0;
+
+        for (String command : commands) {
+            String[] parts = command.split(" ");
+            String action = parts[0];
+            int value = Integer.parseInt(parts[1]);
+
+            switch (action) {
+                case "forward":
+                    horizontalPosition += value;
+                    break;
+                case "down":
+                    depth += value;
+                    break;
+                case "up":
+                    depth -= value;
+                    break;
+            }
+        }
+
+        return horizontalPosition * depth;
     }
 
     /** TODO 4
@@ -58,7 +115,31 @@ public class AdventureTime {
      * @throws FileNotFoundException
      */
     public static int challengeFour(String filename) throws FileNotFoundException {
-        return 0;
+        String[] commands = readFileAsStringArray(fileName);
+        int horizontalPosition = 0;
+        int depth = 0;
+        int aim = 0;
+
+        for (String command : commands) {
+            String[] parts = command.split(" ");
+            String action = parts[0];
+            int value = Integer.parseInt(parts[1]);
+
+            switch (action) {
+                case "forward":
+                    horizontalPosition += value;
+                    depth += aim * value;
+                    break;
+                case "down":
+                    aim += value;
+                    break;
+                case "up":
+                    aim -= value;
+                    break;
+            }
+        }
+
+        return horizontalPosition * depth;
     }
 
     /** This method will write the values passed as challengeOne, challengeTwo, challengeThree, and challengeFour to a text file.
