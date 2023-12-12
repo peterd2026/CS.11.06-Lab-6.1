@@ -1,6 +1,5 @@
 import java.io.*;
 import java.util.Scanner;
-import java.lang.String;
 
 public class AdventureTime {
 
@@ -10,21 +9,21 @@ public class AdventureTime {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-            String inputFilename = "inputOneTwo.txt";
+        String inputFilename = "inputOneTwo.txt";
 
-            int count1 = challengeOne(inputFilename);
-            System.out.println("Challenge 1: Number of measurements larger than the previous measurement: " + count1);
+        int count1 = challengeOne(inputFilename);
+        System.out.println("Challenge 1: Number of measurements larger than the previous measurement: " + count1);
 
-            int count2 = challengeTwo(inputFilename);
-            System.out.println("Challenge 2: Number of sums larger than the previous sum: " + count2);
+        int count2 = challengeTwo(inputFilename);
+        System.out.println("Challenge 2: Number of sums larger than the previous sum: " + count2);
 
-            String inputFilename2 = "inputThreeFour.txt";
-            int result3 = challengeThree(inputFilename2);
-            System.out.println("Challenge 3: Horizontal position multiplied by depth: " + result3);
+        String inputFilename2 = "inputThreeFour.txt";
+        int result3 = challengeThree(inputFilename2);
+        System.out.println("Challenge 3: Horizontal position multiplied by depth: " + result3);
 
-            int result4 = challengeFour(inputFilename2);
-            System.out.println("Challenge 4: Horizontal position multiplied by depth: " + result4);
-        }
+        int result4 = challengeFour(inputFilename2);
+        System.out.println("Challenge 4: Horizontal position multiplied by depth: " + result4);
+    }
 
 
 
@@ -81,7 +80,12 @@ public class AdventureTime {
      * @throws FileNotFoundException
      */
     public static int challengeThree(String inputFilename2) throws FileNotFoundException {
-        String[] commands = readFile(inputFilename2);
+        int[] data = readFile(inputFilename2);
+        String[] commands = new String[data.length];
+        for (int i = 0; i < data.length; i++) {
+            commands[i] = String.valueOf(data[i]);
+        }
+
         int horizontalPosition = 0;
         int depth = 0;
 
@@ -106,6 +110,7 @@ public class AdventureTime {
         return horizontalPosition * depth;
     }
 
+
     /** TODO 4
      *
      * Challenge 4
@@ -115,7 +120,12 @@ public class AdventureTime {
      * @throws FileNotFoundException
      */
     public static int challengeFour(String inputFilename2) throws FileNotFoundException {
-        String[] commands = readFile(inputFilename2);
+        int[] data = readFile(inputFilename2);
+        String[] commands = new String[data.length];
+        for (int i = 0; i < data.length; i++) {
+            commands[i] = String.valueOf(data[i]);
+        }
+
         int horizontalPosition = 0;
         int depth = 0;
         int aim = 0;
