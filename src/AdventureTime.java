@@ -61,7 +61,7 @@ public class AdventureTime {
         int[] data = readFile(inputFilename);
         int count = 0;
 
-        for (int i = 2; i < data.length; i++) {
+        for (int i = 3; i < data.length; i++) {
             int sum1 = data[i - 2] + data[i - 1] + data[i];
             int sum2 = data[i - 3] + data[i - 2] + data[i - 1];
             if (sum1 > sum2) {
@@ -80,12 +80,7 @@ public class AdventureTime {
      * @throws FileNotFoundException
      */
     public static int challengeThree(String inputFilename2) throws FileNotFoundException {
-        int[] data = readFile(inputFilename2);
-        String[] commands = new String[data.length];
-        for (int i = 0; i < data.length; i++) {
-            commands[i] = String.valueOf(data[i]);
-        }
-
+        String[] commands = readStringFile(inputFilename2);
         int horizontalPosition = 0;
         int depth = 0;
 
@@ -110,7 +105,6 @@ public class AdventureTime {
         return horizontalPosition * depth;
     }
 
-
     /** TODO 4
      *
      * Challenge 4
@@ -120,12 +114,7 @@ public class AdventureTime {
      * @throws FileNotFoundException
      */
     public static int challengeFour(String inputFilename2) throws FileNotFoundException {
-        int[] data = readFile(inputFilename2);
-        String[] commands = new String[data.length];
-        for (int i = 0; i < data.length; i++) {
-            commands[i] = String.valueOf(data[i]);
-        }
-
+        String[] commands = readStringFile(inputFilename2);
         int horizontalPosition = 0;
         int depth = 0;
         int aim = 0;
@@ -150,6 +139,19 @@ public class AdventureTime {
         }
 
         return horizontalPosition * depth;
+    }
+
+    private static String[] readStringFile(String inputFilename) throws FileNotFoundException {
+        File file = new File(inputFilename);
+        Scanner scanner = new Scanner(file);
+        int numberOfLinesInFile = countLinesInFile(inputFilename);
+        String[] data = new String[numberOfLinesInFile];
+        int index = 0;
+        while (scanner.hasNextLine()) {
+            data[index++] = scanner.nextLine();
+        }
+        scanner.close();
+        return data;
     }
 
     /** This method will write the values passed as challengeOne, challengeTwo, challengeThree, and challengeFour to a text file.
