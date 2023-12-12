@@ -1,5 +1,6 @@
 import java.io.*;
 import java.util.Scanner;
+import java.lang.String;
 
 public class AdventureTime {
 
@@ -9,7 +10,6 @@ public class AdventureTime {
      * @throws IOException
      */
     public static void main(String[] args) throws IOException {
-        public static void main(String[] args) throws IOException {
             String inputFilename = "inputOneTwo.txt";
 
             int count1 = challengeOne(inputFilename);
@@ -26,18 +26,18 @@ public class AdventureTime {
             System.out.println("Challenge 4: Horizontal position multiplied by depth: " + result4);
         }
 
-    }
+
 
     /** TODO 1
      *
      * Challenge 1
      *
-     * @param fileName
+     * @param inputFilename
      * @return Answer to Challenge 1
      * @throws IOException
      */
-    public static int challengeOne(String fileName) throws IOException {
-        int[] data = readFile(fileName);
+    public static int challengeOne(String inputFilename) throws IOException {
+        int[] data = readFile(inputFilename);
         int count = 0;
 
         for (int i = 1; i < data.length; i++) {
@@ -54,12 +54,12 @@ public class AdventureTime {
      *
      * Challenge 2
      *
-     * @param fileName
+     * @param inputFilename
      * @return Answer to Challenge 2
      * @throws FileNotFoundException
      */
-    public static int challengeTwo(String fileName) throws FileNotFoundException {
-        int[] data = readFile(fileName);
+    public static int challengeTwo(String inputFilename) throws FileNotFoundException {
+        int[] data = readFile(inputFilename);
         int count = 0;
 
         for (int i = 2; i < data.length; i++) {
@@ -69,19 +69,19 @@ public class AdventureTime {
                 count++;
             }
         }
-
+        return count;
     }
 
     /** TODO 3
      *
      * Challenge 3
      *
-     * @param fileName
+     * @param inputFilename2
      * @return Answer to Challenge 3
      * @throws FileNotFoundException
      */
-    public static int challengeThree(String fileName) throws FileNotFoundException {
-        String[] commands = readFileAsStringArray(fileName);
+    public static int challengeThree(String inputFilename2) throws FileNotFoundException {
+        String[] commands = readFile(inputFilename2);
         int horizontalPosition = 0;
         int depth = 0;
 
@@ -110,12 +110,12 @@ public class AdventureTime {
      *
      * Challenge 4
      *
-     * @param filename
+     * @param inputFilename2
      * @return Answer to Challenge 4
      * @throws FileNotFoundException
      */
-    public static int challengeFour(String filename) throws FileNotFoundException {
-        String[] commands = readFileAsStringArray(fileName);
+    public static int challengeFour(String inputFilename2) throws FileNotFoundException {
+        String[] commands = readFile(inputFilename2);
         int horizontalPosition = 0;
         int depth = 0;
         int aim = 0;
